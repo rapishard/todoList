@@ -19,7 +19,7 @@ const TodoList: React.FC<props> = ({
   return (
     <div className="container">
       <Droppable droppableId="TodosList">
-        {(provided: { innerRef: React.LegacyRef<HTMLDivElement> | undefined; droppableProps: JSX.IntrinsicAttributes & React.ClassAttributes<HTMLDivElement> & React.HTMLAttributes<HTMLDivElement>; placeholder: boolean | React.ReactChild | React.ReactFragment | React.ReactPortal | null | undefined; }, snapshot: { isDraggingOver: any; }) => (
+        {(provided, snapshot) => (
           <div
             className={`todos ${snapshot.isDraggingOver ? "dragactive" : ""}`}
             ref={provided.innerRef}
@@ -40,13 +40,12 @@ const TodoList: React.FC<props> = ({
         )}
       </Droppable>
       <Droppable droppableId="TodosRemove">
-        {(provided: { innerRef: React.LegacyRef<HTMLDivElement> | undefined; droppableProps: JSX.IntrinsicAttributes & React.ClassAttributes<HTMLDivElement> & React.HTMLAttributes<HTMLDivElement>; placeholder: boolean | React.ReactChild | React.ReactFragment | React.ReactPortal | null | undefined; }, snapshot: { isDraggingOver: any; }) => (
+        {(provided, snapshot) => (
           <div
             ref={provided.innerRef}
             {...provided.droppableProps}
-            className={`todos  ${
-              snapshot.isDraggingOver ? "dragcomplete" : "remove"
-            }`}
+            className={`todos  ${snapshot.isDraggingOver ? "dragcomplete" : "remove"
+              }`}
           >
             <span className="todos__heading">Completed Tasks</span>
             {CompletedTodos?.map((todo, index) => (
