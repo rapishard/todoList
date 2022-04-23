@@ -6,7 +6,7 @@ import { AiFillEdit, AiFillDelete } from "react-icons/ai";
 import { MdDone } from "react-icons/md";
 import { Draggable } from "react-beautiful-dnd";
 
-const SingleTodo: React.FC<{
+const Singletodos: React.FC<{
   index: number;
   todo: Todo;
   todos: Array<Todo>;
@@ -86,4 +86,4 @@ const SingleTodo: React.FC<{
   );
 };
 
-export default SingleTodo;
+export default Singletodos;

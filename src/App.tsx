@@ -9,7 +9,7 @@ import { DragDropContext, DropResult } from "react-beautiful-dnd";
 const App: React.FC = () => {
   const [todo, setTodo] = useState<string>("");
   const [todos, setTodos] = useState<Array<Todo>>([]);
-  const [CompletedTodos, setCompletedTodos] = useState<Array<Todo>>([]);
+  const [Completedtodos, setCompletedtTodos] = useState<Array<Todo>>([]);
 
   const handleAdd = (e: React.FormEvent) => {
     e.preventDefault();
@@ -38,9 +38,9 @@ const App: React.FC = () => {
 
     let add;
     let active = todos;
-    let complete = CompletedTodos;
+    let complete = Completedtodos;
     // Source Logic
-    if (source.droppableId === "TodosList") {
+    if (source.droppableId === "todosList") {
       add = active[source.index];
       active.splice(source.index, 1);
     } else {
@@ -49,26 +49,26 @@ const App: React.FC = () => {
     }
 
     // Destination Logic
-    if (destination.droppableId === "TodosList") {
+    if (destination.droppableId === "todosList") {
       active.splice(destination.index, 0, add);
     } else {
       complete.splice(destination.index, 0, add);
     }
 
-    setCompletedTodos(complete);
+    setCompletedtTodos(complete);
     setTodos(active);
   };
 
   return (
     <DragDropContext onDragEnd={onDragEnd}>
       <div className="App">
-        <span className="heading">Todolist</span>
+        <span className="heading">Shopping list</span>
         <InputField todo={todo} setTodo={setTodo} handleAdd={handleAdd} />
         <TodoList
           todos={todos}
           setTodos={setTodos}
-          CompletedTodos={CompletedTodos}
-          setCompletedTodos={setCompletedTodos}
+          CompletedTodos={Completedtodos}
+          setCompletedTodos={setCompletedtTodos}
         />
       </div>
     </DragDropContext>
